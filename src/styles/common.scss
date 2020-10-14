@@ -1,0 +1,14 @@
+@import "@/styles/variable.scss";
+* {
+    margin: 0px;
+    padding: 0px;
+    outline: none;
+    text-decoration: none;
+}
+.el-image {
+    width: 80px;
+    height: 80px;
+}
+.el-pagination {
+    white-space: inherit !important;
+}
