@@ -16,10 +16,6 @@ module.exports = {
   tokenName: "token",
   //token存储位置localStorage sessionStorage cookie
   storage: "localStorage",
-  //是否开启主题配置按钮
-  themeBar: true,
-  //是否显示多标签页
-  tagsBar: true,
   //配后端数据的接收方式application/json;charset=UTF-8或者application/x-www-form-urlencoded;charset=UTF-8
   contentType: "application/json;charset=UTF-8",
   //消息框消失时间
@@ -34,6 +30,4 @@ module.exports = {
   noPermissionCode: 401,
   //设置生产环境是否屏蔽f12等开发组工具快捷键
   shieldF12: false,
-  //vertical布局时是否只保持一个子菜单的展开
-  uniqueOpened: true,
 };

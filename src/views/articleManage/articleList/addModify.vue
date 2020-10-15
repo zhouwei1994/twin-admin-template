@@ -20,7 +20,12 @@
         <el-input v-model.trim="form.title" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="文章内容" prop="content">
-        <wang-editor v-model="form.content"></wang-editor>
+        <el-input
+          type="textarea"
+          :rows="2"
+          placeholder="请输入文章内容"
+          v-model="content">
+        </el-input>
       </el-form-item>
       <el-form-item label="是否原创" prop="original">
         <el-switch
@@ -41,11 +46,9 @@
 </template>
 
 <script>
-import wangEditor from "@/components/wang-editor";
 export default {
   name: "ArticleAddModify",
   components: {
-    wangEditor,
   },
   data() {
     let _this = this;
