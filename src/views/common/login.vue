@@ -21,9 +21,9 @@
         <div class="login-input">
           <i class="iconfont icon-mima"></i>
           <input ref="password" :type="visiblePassword ? 'text' : 'password'" v-model="password" placeholder="请输入密码" @keyup.enter="onSubmit"/>
-          <i class="iconfont" :class="[visiblePassword ? 'iconfont_visible_eye' : 'iconfont_eye']" @click="visiblePassword = !visiblePassword"></i>
+          <i class="iconfont" :class="[visiblePassword ? 'icon-zhuce-mimaxianshi' : 'icon-mimayincang1']" @click="visiblePassword = !visiblePassword"></i>
         </div>
-        <div class="login-password icon-mimayincang1" :class="{ 'icon-zhuce-mimaxianshi': passwordCheck}" @click="onSubmit">
+        <div class="login-password" :class="{ 'login-password-show': passwordCheck}" @click="onSubmit">
           <i class="iconfont icon-rightarrow"></i>
         </div>
       </div>
@@ -47,7 +47,7 @@
         <div class="login-input">
           <i class="iconfont icon-mima"></i>
           <input :type="visiblePassword ? 'text' : 'password'" v-model="password" placeholder="请输入密码"  @keyup.enter="onSubmit"/>
-          <i class="iconfont" :class="[visiblePassword ? 'iconfont_visible_eye' : 'iconfont_eye']" @click="visiblePassword = !visiblePassword"></i>
+          <i class="iconfont" :class="[visiblePassword ? 'icon-zhuce-mimaxianshi' : 'icon-mimayincang1']" @click="visiblePassword = !visiblePassword"></i>
         </div>
         <div class="login-input-tip">
           <span v-if="passwordTip">{{ passwordTip }}</span>
