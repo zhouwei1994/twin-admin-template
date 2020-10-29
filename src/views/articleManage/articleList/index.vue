@@ -145,11 +145,17 @@ export default {
   created() {
     this.fetchData();
   },
+  twinShow(){
+    console.log("页面显示");
+  },
+  twinHide(){
+    console.log("页面隐藏");
+  },
   methods: {
     onAddEdit(row) {
       if (row.id) {
         // 双生布局路由跳转
-        this.router.push({
+        this.twin.$router.push({
           name: "ArticleAddModify", // 路由名称 --- 必填
           title: "修改文章", // 路由标题(不填将默认查询路由的title)
           reload: true,  // 路由是否重新加载（一般跳转修改需要）
@@ -157,15 +163,15 @@ export default {
             id: row.id
           }
         });
-        // this.route 获取路由信息
+        // twin.$route 获取路由信息
         // 双生布局路由获取query参数
-        // this.route.query.id
+        // this.twin.$route.query.id
 
         // 关闭当前页面
-        // this.router.close();
+        // this.twin.$router.close();
 
         // 刷新当前页面
-        // this.router.reload();
+        // this.twin.$router.reload();
         
         // 全局方法---是否有权限
         // check('add')  判断是否有添加权限  返回true、false
@@ -174,14 +180,14 @@ export default {
         // check('view') 判断是否有查看权限  返回true、false
         // check(['add', 'modify']) 判断是否有添加或修改权限  返回true、false
       } else {
-        this.router.push({
+        this.twin.$router.push({
           name: "ArticleAddModify",
           title: "添加文章",
         });
       }
     },
     onGrab() {
-      this.router.push({
+      this.twin.$router.push({
           name: "ArticleGrab",
           title: "抓取文章",
       });

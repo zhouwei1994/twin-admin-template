@@ -98,7 +98,7 @@ export default {
           //   .then((res) => {
           //     this.$baseMessage(res.msg, "success");
           //     this.$emit("fetchData");
-          //     this.close();
+          //     this.twin.$router.close();
           //   });
         } else {
           return false;

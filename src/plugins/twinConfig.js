@@ -25,6 +25,11 @@ export default function () {
       noticeNum: 8, //消息数
       ...store.state.userInfo
     },
+    // 模式是否可以切换
+    modeSwitch: true,
+    // 默认模式
+    // defaultMode: "classic", // 经典模式
+    defaultMode: "desktop",  // 桌面模式
     // 可选功能
     // features: ["notice", "language"],
     features: ["notice"],
@@ -116,17 +121,6 @@ export default function () {
                   "permissions": ["view", "add", "modify", "delete"]
               }
           }, {
-              "hidden": true,
-              "path": "articleManage/articleList/articleGrab",
-              "name": "ArticleGrab",
-              "type": "component",
-              "meta": {
-                  "title": "抓取文章",
-                  "icon": "icon-zhuashou_",
-                  "iconType": "iconfont",
-                  "permissions": ["view", "add", "modify", "delete"]
-              }
-          }, {
               "hidden": false,
               "path": "articleManage/classifyList/index",
               "name": "ClassifyList",
@@ -149,6 +143,50 @@ export default function () {
                   "permissions": ["view", "add", "modify", "delete"]
               }
             },
+          ]
+        },
+        {
+          "path": "/iframeTest",
+          "redirect": "noRedirect",
+          "meta": {
+            "title": "iframe示例",
+            "icon": "icon-rizhi"
+          },
+          "children": [
+            {
+              "hidden": false,
+              "path": "webpage2.html",
+              "name": "IframeDemo1",
+              "type": "iframe",
+              "meta": {
+                "title": "iframe示例1",
+                "icon": "icon-fuwuqi",
+                "iconType": "iconfont",
+                "permissions": [
+                  "view",
+                  "add",
+                  "modify",
+                  "delete"
+                ]
+              }
+            },
+            {
+              "hidden": false,
+              "path": "webpage.html",
+              "name": "IframeTest2",
+              "type": "iframe",
+              "meta": {
+                "title": "iframe示例2",
+                "icon": "icon-drxx05",
+                "iconType": "iconfont",
+                "permissions": [
+                  "view",
+                  "add",
+                  "modify",
+                  "delete"
+                ]
+              }
+            }
           ]
         },
         {
@@ -196,31 +234,30 @@ export default function () {
     // componentData[data.el].unmount();
   };
   // 窗口打开
-  twin.prototype.windowOpen = (data) => {
-    if (data.$route.type == "component") { 
+  twin.prototype.windowOpen = (data, event) => {
+    if (data.$route.type == "component") {
       let requireUrl = "views/" + data.$route.path + ".vue";
       require([`@/${requireUrl}`], function (page) {
-        data.onHide = page.default.onHide;
-        data.onShow = page.default.onShow;
+        event.twinHide = page.default.twinHide;
+        event.twinShow = page.default.twinShow;
         let pageExtend = Vue.extend(page.default);
         let pageObj = new pageExtend({
           store,
           data: {
-            route: data.$route,
-            router: twinLayout.$router,
+            twin: data
           },
           methods: {
             check(name) {
-              if (name) { 
+              if (name) {
                 if (Array.isArray(name)) {
                   let state = false;
                   name.forEach((item) => {
-                    if (this.route.meta.permissions.includes(item)) {
+                    if (this.twin.$route.meta.permissions.includes(item)) {
                       state = true;
                     }
                   });
                   return state;
-                } else if (this.route.meta.permissions.includes(name)) {
+                } else if (this.twin.$route.meta.permissions.includes(name)) {
                   return true;
                 }
               } else {
@@ -231,10 +268,22 @@ export default function () {
         });
         pageObj.$mount();
         // componentData[data.el] = pageObj;
-        document.querySelector(data.el).appendChild(pageObj.$el);
+        data.$element.appendChild(pageObj.$el);
       });
     }
   };
   // 开始创建双生布局
-  twinLayout.create();
+  twinLayout.create(() => {
+    // 监听数据方法
+    twinLayout.$on("test", (data) => {
+      console.log("【twinConfig.js】收到数据", data);
+    });
+
+    setTimeout(() => {
+      // 发送数据 test方法监听
+      twinLayout.$emit("test", {
+        name: "【twinConfig.js】发送的数据"
+      });
+    }, 5000);
+  });
 }

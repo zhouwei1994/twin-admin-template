@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button onclick="onJump()">去【iframe示例1】发送</button>
+  <button onclick="onClose()">关闭当前弹窗</button>
+  <button onclick="onReload()">刷新当前弹窗</button>
+  <p>收到数据：</p>
+  <div id="test"></div>
+  <script>
+    // 窗口第一次加载
+    twinLoad = function(data){
+      console.log("用户数据1", data);
+      console.log("用户数据2=", twin.$userInfo);
+      console.log("路由数据=", twin.$route);
+      console.log("布局类型=", twin.$layoutType);
+      console.log("iframeId=", twin.$iframeId);
+      twin.$on("test", function(data){
+        console.log("获取到数据", data);
+        document.getElementById("test").innerHTML = JSON.stringify(data);
+      });
+    }
+    twinShow = function(){
+      console.log("窗口显示");
+    }
+    twinHide = function(){
+      console.log("窗口隐藏");
+    }
+    twinUnload = function(){
+      console.log("窗口删除");
+    }
+    function onJump(){
+      twin.$router.push({
+        name: "IframeDemo1",
+        title: "iframe示例1",
+      });
+    }
+    function onClose() {
+      // 关闭当前页面
+      twin.$router.close();
+    }
+    function onReload() {
+      // 刷新当前页面
+      twin.$router.reload();
+    }
+  </script>
+</body>
+</html>

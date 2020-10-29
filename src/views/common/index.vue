@@ -230,7 +230,11 @@ export default {
   created() {
     this.fetchData();
   },
-  mounted() {
+  twinShow(){
+    console.log("页面显示");
+  },
+  twinHide(){
+    console.log("页面隐藏");
   },
   methods: {
     fetchData() {

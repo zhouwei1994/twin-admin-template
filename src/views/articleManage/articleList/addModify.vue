@@ -90,14 +90,14 @@ export default {
     };
   },
   created() {
-    if (this.route.query.id) {
-      this.form.id = this.route.query.id;
+    if (this.twin.$route.query.id) {
+      this.form.id = this.twin.$route.query.id;
       this.fetchData();
     }
   },
   activated() {
-    // if (this.route.query.id) {
-    //   this.form.id = this.route.query.id;
+    // if (this.twin.$route.query.id) {
+    //   this.form.id = this.twin.$route.query.id;
     //   this.fetchData();
     // }
   },
@@ -139,7 +139,7 @@ export default {
           //     this.$alert(res.msg, {
           //       confirmButtonText: "确定",
           //       callback: () => {
-          //         this.router.close();
+          //         this.twin.$router.close();
           //       },
           //     });
           //   });

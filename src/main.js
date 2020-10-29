@@ -16,4 +16,3 @@ new Vue({
   store,
   render: h => h(App),
 }).$mount('#app');
-Vue.component("image-upload", ElxImgbox);
