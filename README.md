@@ -15,8 +15,6 @@ cd twin-admin-template
 3. 下载npm依赖
 ```
 yarn 或 npm install
-
-npm run dev
 ```
 4. 运行项目
 ```
