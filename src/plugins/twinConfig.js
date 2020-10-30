@@ -25,6 +25,12 @@ export default function () {
       noticeNum: 8, //消息数
       ...store.state.userInfo
     },
+    // 设置背景图片
+    // background: [
+    //   "http://",
+    //   "http://",
+    //   "http://",
+    // ],
     // 模式是否可以切换
     modeSwitch: true,
     // 默认模式
@@ -238,8 +244,6 @@ export default function () {
     if (data.$route.type == "component") {
       let requireUrl = "views/" + data.$route.path + ".vue";
       require([`@/${requireUrl}`], function (page) {
-        event.twinHide = page.default.twinHide;
-        event.twinShow = page.default.twinShow;
         let pageExtend = Vue.extend(page.default);
         let pageObj = new pageExtend({
           store,
@@ -266,6 +270,8 @@ export default function () {
             },
           }
         });
+        event.twinHide = page.default.twinHide.bind(pageObj);
+        event.twinShow = page.default.twinShow.bind(pageObj);
         pageObj.$mount();
         // componentData[data.el] = pageObj;
         data.$element.appendChild(pageObj.$el);

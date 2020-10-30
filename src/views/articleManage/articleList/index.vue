@@ -147,6 +147,7 @@ export default {
   },
   twinShow(){
     console.log("页面显示");
+    this.fetchData();
   },
   twinHide(){
     console.log("页面隐藏");
@@ -191,6 +192,8 @@ export default {
 
         // 获取窗口容器ID
         console.log("窗口容器ID=",this.twin.$el);
+
+        // 
 
         // 全局方法---是否有权限
         // check('add')  判断是否有添加权限  返回true、false
