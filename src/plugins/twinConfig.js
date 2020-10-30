@@ -270,8 +270,12 @@ export default function () {
             },
           }
         });
-        event.twinHide = page.default.twinHide.bind(pageObj);
-        event.twinShow = page.default.twinShow.bind(pageObj);
+        if (page.default.twinShow) { 
+          event.twinShow = page.default.twinShow.bind(pageObj);
+        }
+        if (page.default.twinHide) {
+          event.twinHide = page.default.twinHide.bind(pageObj);
+        }
         pageObj.$mount();
         // componentData[data.el] = pageObj;
         data.$element.appendChild(pageObj.$el);
