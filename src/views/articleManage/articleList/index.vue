@@ -173,6 +173,25 @@ export default {
         // 刷新当前页面
         // this.twin.$router.reload();
         
+        // 全局事件监听
+        this.twin.$on("test", (data) => {
+          console.log("收到数据=", data);
+        });
+        // 全局事件发送
+        this.twin.$emit("test", {name: "我可以发送数据"});
+
+        // 布局类型获取
+        console.log("布局类型=",this.twin.$layoutType);
+
+        // 获取传入的userInfo
+        console.log("userInfo=",this.twin.$userInfo);
+
+        // 获取窗口容器dom
+        console.log("窗口容器dom=",this.twin.$element);
+
+        // 获取窗口容器ID
+        console.log("窗口容器ID=",this.twin.$el);
+
         // 全局方法---是否有权限
         // check('add')  判断是否有添加权限  返回true、false
         // check('delete')  判断是否有删除权限  返回true、false
