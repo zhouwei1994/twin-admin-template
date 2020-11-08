@@ -43,7 +43,7 @@
             ></el-input>
           </el-form-item>
           <el-form-item label="头像" prop="avatar">
-            <image-upload v-model="baseForm.avatar" :limit="1"></image-upload>
+            <!-- <image-upload v-model="baseForm.avatar" :limit="1"></image-upload> -->
           </el-form-item>
           <el-form-item>
             <el-button type="primary" @click="onModify('base')">修改</el-button>

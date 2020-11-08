@@ -233,11 +233,48 @@ export default function () {
       }
     }
   });
-  // let componentData = {};
+  // 主题变化，可以在这个改变框架的颜色
+  twin.prototype.themeChange = function (data) {
+    /* element-ui的主题覆盖修改 */
+    return `.el-button--primary,
+        .el-tag--dark {
+            background-color: rgba(${data.themeColor }, 1) !important;
+            border-color: rgba(${data.themeColor }, 1) !important;
+        }
+        .el-tabs__active-bar,
+        .el-pagination.is-background .el-pager li:not(.disabled).active {
+            background-color: rgba(${data.themeColor }, 1) !important;
+        }
+        .theme_border_color,
+        .el-pagination.is-background .el-pager li:not(.disabled).active {
+            border-color: rgba(${data.themeColor }, 1) !important;
+        }
+        .el-tag {
+            background-color: rgba(${data.themeColor }, 0.1) !important;
+            border-color: rgba(${data.themeColor }, 0.1) !important;
+            color: rgba(${data.themeColor }, 1) !important;
+        }
+        .theme_color,
+        .el-loading-text,
+        .el-button--text,
+        .el-tabs__item.is-active,
+        .el-tabs__item:hover,
+        .el-pagination.is-background .el-pager li:not(.disabled):hover,
+        .el-radio-button__inner:hover {
+            color: rgba(${data.themeColor }, 1) !important;
+        }
+
+        .github-corner .github-color {
+            fill: rgba(${data.themeColor }, 1) !important;
+        }
+
+        .el-loading-spinner .path {
+            stroke: rgba(${data.themeColor }, 1) !important;
+        }`
+  }
   // 窗口关闭
   twin.prototype.windowRemove = () => {
     //注销vue组件
-    // componentData[data.el].unmount();
   };
   // 窗口打开
   twin.prototype.windowOpen = (data, event) => {
@@ -277,23 +314,23 @@ export default function () {
           event.twinHide = page.default.twinHide.bind(pageObj);
         }
         pageObj.$mount();
-        // componentData[data.el] = pageObj;
         data.$element.appendChild(pageObj.$el);
       });
     }
   };
+  // 监听数据方法
+  twinLayout.$on("test", (data) => {
+    console.log("【twinConfig.js】收到数据", data);
+  });
+
+  setTimeout(() => {
+    // 发送数据 test方法监听
+    twinLayout.$emit("test", {
+      name: "【twinConfig.js】发送的数据"
+    });
+  }, 5000);
   // 开始创建双生布局
   twinLayout.create(() => {
-    // 监听数据方法
-    twinLayout.$on("test", (data) => {
-      console.log("【twinConfig.js】收到数据", data);
-    });
-
-    setTimeout(() => {
-      // 发送数据 test方法监听
-      twinLayout.$emit("test", {
-        name: "【twinConfig.js】发送的数据"
-      });
-    }, 5000);
+    
   });
 }

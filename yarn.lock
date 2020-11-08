@@ -8017,10 +8017,10 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.npm.taobao.org/tweetnacl/download/tweetnacl-0.14.5.tgz?cache=0&sync_timestamp=1589682745749&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Ftweetnacl%2Fdownload%2Ftweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
-twin-layout@^1.0.22:
-  version "1.0.22"
-  resolved "https://registry.yarnpkg.com/twin-layout/-/twin-layout-1.0.22.tgz#e15d1540618ec201786939d1f5e014fa310e5946"
-  integrity sha512-Za4+D0y7np/v2ywx+8XDlal53J9hWpEhYnc+/fxMRbGdKuEvvFWUDiUtJrKQ9R8NDwoygnOWacPq2oV4+d0lFw==
+twin-layout@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/twin-layout/-/twin-layout-1.0.3.tgz#85ce94a4b7d5b9ed92e3d1b49292b77fd6272d8d"
+  integrity sha512-ocCx6CtyRp5R7lHe43I/11a/TgpkOWP7J4pHjjMlq/nRy331hQbr+9DuSdD3SjzpsA19ztdmAiwBwIIZZaeCFg==
 
 type-check@~0.3.2:
   version "0.3.2"

@@ -24,7 +24,7 @@
           type="textarea"
           :rows="2"
           placeholder="请输入文章内容"
-          v-model="content">
+          v-model="form.content">
         </el-input>
       </el-form-item>
       <el-form-item label="是否原创" prop="original">

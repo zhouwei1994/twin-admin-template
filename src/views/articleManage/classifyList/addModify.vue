@@ -18,7 +18,7 @@
         <el-input v-model.trim="form.name" autocomplete="off"></el-input>
       </el-form-item>
       <el-form-item label="分类图标" prop="icon">
-        <image-upload v-model="form.icon" :limit="1"></image-upload>
+        <!-- <image-upload v-model="form.icon" :limit="1"></image-upload> -->
       </el-form-item>
     </el-form>
     <div slot="footer" class="dialog-footer">
