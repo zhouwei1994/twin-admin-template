@@ -68,10 +68,10 @@ export default {
       defaultAccount: false,
       visiblePassword: false,
       avatar: "",
-      username: "",
+      username: "test",
       usernameTip: "",
       usernameCheck: false,
-      password: "",
+      password: "123123",
       passwordTip: "",
       passwordCheck: false,
       title, logo,introduction,
@@ -118,10 +118,10 @@ export default {
       this.resetData();
     },
     resetData(){
-      this.username = "";
+      this.username = "test";
       this.usernameTip = "";
       this.usernameCheck = false;
-      this.password = "";
+      this.password = "123123";
       this.passwordTip = "";
       this.passwordCheck = false;
     },
