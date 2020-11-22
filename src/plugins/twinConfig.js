@@ -320,7 +320,7 @@ export default function () {
   };
   // 监听数据方法
   twinLayout.$on("test", (data) => {
-    console.log("【twinConfig.js】收到数据", data);
+    window.console.log("【twinConfig.js】收到数据", data);
   });
 
   setTimeout(() => {
