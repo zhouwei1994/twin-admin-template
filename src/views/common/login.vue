@@ -75,7 +75,7 @@ export default {
       passwordTip: "",
       passwordCheck: false,
       title, logo,introduction,
-      backgroundUrl: process.env.VUE_APP_BASE_API + "/common/v1/wallpaper"
+      backgroundUrl: "https://twin-ui.com/twin/common/common/wallpaper"
     };
   },
   watch: {
